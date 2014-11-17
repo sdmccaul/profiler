@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}Profile{% endblock %}
+
+{% block page_content %}
+<div class="page-header">
+    <h1>{{ profile.lastName}}, {{ profile.firstName }}</h1>
+    <p>Education</p>
+    <ul>
+    {% for edu in eduList %}
+    <li>{{ edu.degree }}, {{ edu.organization }}. {{ edu.date }} <a href="/edit-education/{{ edu.id }}">edit</a></li>
+    {% endfor %}
+    <a href="/edit-education/0">Add education</a>
+</div>
+{% endblock %}

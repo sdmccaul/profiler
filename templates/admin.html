@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}Profile{% endblock %}
+
+{% block page_content %}
+<div class="page-header">
+    <h1>Admin</h1>
+    <h3>Profile Data</h3>
+    <a href="/edit-profile/0">Add new entry</a>
+    <table>
+    	<tr>
+    		<th>id</th>
+    		<th>shortid</th>
+    		<th>first</th>
+    		<th>last</th>
+    		<th>CRUD</th>
+    	</tr>
+    	{% for profile in profileList %}
+    	<tr>
+    		<td>{{ profile.id }}</td>
+    	    <td>{{ profile.shortid }}</td>
+    	    <td>{{ profile.firstName }}</td>
+    	    <td>{{ profile.lastName }}</td>
+    	    <td><a href="/edit-profile/{{ profile.id }}">edit</a></td>
+    	 </tr>
+    	{% endfor %}
+    </table>
+    <h3>Education data</h3>
+    <a href="/edit-education/0">Add new entry</a>
+    <table>
+    	<tr>
+    		<th>id</th>
+    		<th>degree</th>
+    		<th>organization</th>
+    		<th>date</th>
+    		<th>profileid</th>
+    		<th>CRUD</th>
+    	</tr>
+    	{% for education in educationList %}
+    	<tr>
+    		<td>{{ education.id }}</td>
+    	    <td>{{ education.degree }}</td>
+    	    <td>{{ education.organization }}</td>
+    	    <td>{{ education.date }}</td>
+    	    <td>{{ education.profile_id }}</td>
+    	    <td><a href="/edit-education/{{ education.id }}">edit</a></td>
+    	 </tr>
+    	{% endfor %}
+    </table>    
+</div>
+{% endblock %}
